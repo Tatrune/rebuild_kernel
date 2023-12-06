@@ -43,7 +43,7 @@ Step6: Install Directly onto the SD Card
     mkdir mnt/ext4
     sudo mount /dev/sdb1 mnt/fat32
     sudo mount /dev/sdb2 mnt/ext4
-    
+
 For 32-bit:
     sudo env PATH=$PATH make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- INSTALL_MOD_PATH=mnt/ext4 modules_install
 
@@ -53,18 +53,28 @@ For 64-bit
 step7: Copy the kernel and Device Tree blobs onto the SD card
 For 32-bit:
     sudo cp arch/arm/boot/zImage mnt/fat32/kernel-2023.img
+
     sudo cp arch/arm/boot/dts/*.dtb mnt/fat32/
+
     sudo cp arch/arm/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
+
     sudo cp arch/arm/boot/dts/overlays/README mnt/fat32/overlays/
+
     sudo umount mnt/fat32
+
     sudo umount mnt/ext4
 
-For 64-bit
+For 64-bit:
     sudo cp arch/arm64/boot/Image mnt/fat32/kernel-2023.img
+
     sudo cp arch/arm64/boot/dts/broadcom/*.dtb mnt/fat32/
+
     sudo cp arch/arm64/boot/dts/overlays/*.dtb* mnt/fat32/overlays/
+
     sudo cp arch/arm64/boot/dts/overlays/README mnt/fat32/overlays/
+
     sudo umount mnt/fat32
+    
     sudo umount mnt/ext4
 
 Edit the "config.txt" file to select the kernel that the Raspberry Pi will boot:
